@@ -24,12 +24,14 @@
 
             <button class="btn" @click="title = 'Теперь я другое название'">
                 Изменить название</button> -->
-            <ul class="list">
-                <!-- <li class="list-item" v-for="(item, i) in 7">
-                    <strong> {{i}} </strong> {{ item }}
-                </li> -->
-                <li class="list-item" v-for="(value, key) in person"><strong>{{key}}</strong> {{value}}</li>
+            <ul class="list" v-if="items.length !==0">
+                <li class="list-item" v-for="(item, i) in items" @click="items.splice(i,1)">
+                    <strong> {{ item }} </strong> &nbsp;
+                    <input type="text" @click.stop>
+                </li>
+                <!-- <li class="list-item" v-for="(value, key) in person"><strong>{{key}}</strong> {{value}}</li> -->
             </ul>
+            <h3 v-schow="items.length ===0">Элементов нет</h3>
         </div>
     </div>
 
