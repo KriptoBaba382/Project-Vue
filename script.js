@@ -1,12 +1,34 @@
-Vue.createApp({
-    data: () => ({
-        myHtml: '<h1>Vue 3 App</h1>',
-        title: 'Я есть Грут',
-        person: {
-            firstName: 'Vladilen',
-            lastName: 'Minin',
-            age: 27
+const h = Vue.h
+
+const app = Vue.createApp({
+    data() {
+        return {
+            title: 'Это из свойства template'
+
+        }
+    },
+    methods: {
+        changeTitle() {
+            this.title = 'Изменили!'
+        }
+    },
+    // template: `
+    // <div class='card center'>
+    // <h1>{{  title }}</h1>
+    // <button class='btn'@click="title = 'Изменили!'">Изменить</button>
+    // </div>
+    // `
+    render() {
+        return h('div', {
+            class: 'card center'
         },
-        items: [1, 2, 3, 4, 5, 6]
-    })
-}).mount('#app')
+            [h('h1', {}, this.title),
+            h('button', {
+                class: 'card center',
+                onClick: this.changeTitle
+            }, 'Изменить')
+            ])
+    }
+})
+
+app.mount('#app')
