@@ -1,8 +1,8 @@
 const App = {
     data() {
         return {
-            counter: 0
+            counter: 42
         }
     }
 }
-Vue.createApp(App)
+Vue.createApp(App).mount('#app')
